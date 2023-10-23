@@ -4,10 +4,10 @@ Simple pagination
 """
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
 
-def index_range(page, page_size):
+def index_range(page: int, page_size: int) -> Tuple:
     """
     page index
     """
@@ -34,4 +34,7 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        pass
+        assert type(page) is int and type(page_size) is int
+        assert page > 0 and page_size > 0
+        start_index, end_index = index_range(page, page_size)
+        return self.dataset()[start_index:end_index]
