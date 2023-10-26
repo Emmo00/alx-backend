@@ -5,10 +5,15 @@ basic caching
 from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """
-    FIFO impl. caching
+    LIFO impl. caching
     """
+    def __init__(self):
+        """initialize
+        """
+        super().__init__()
+        self.last_in = None
 
     def put(self, key, item):
         """ Add an item in the cache
@@ -16,10 +21,10 @@ class FIFOCache(BaseCaching):
         if key is None or item is None:
             return
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
-            first_in = list(self.cache_data.keys())[0]
-            print(f"DISCARD: {first_in}")
-            del self.cache_data[first_in]
+            print(f"DISCARD: {self.last_in}")
+            del self.cache_data[self.last_in]
         self.cache_data[key] = item
+        self.last_in = key
 
     def get(self, key):
         """ Get an item by key
