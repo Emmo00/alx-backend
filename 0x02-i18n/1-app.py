@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """flask app
 """
+from typing import List
+
 from flask import Flask, render_template
 from flask_babel import Babel
 
@@ -11,7 +13,7 @@ babel = Babel(app)
 class Config:
     """config object
     """
-    LANGUAGES = ['en', 'fr']
+    LANGUAGES: List[str] = ['en', 'fr']
 
 
 app.config.from_object(Config())
