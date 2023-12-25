@@ -9,7 +9,9 @@ from flask_babel import Babel
 app = Flask(__name__)
 
 
-def get_locale():
+def get_locale() -> str:
+    """get locale
+    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
