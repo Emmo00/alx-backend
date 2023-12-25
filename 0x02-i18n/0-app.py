@@ -13,4 +13,5 @@ def index() -> None:
     return render_template('0-index.html')
 
 
-app.run('0.0.0.0')
+if __name__ == '__main__':
+    app.run('0.0.0.0')
