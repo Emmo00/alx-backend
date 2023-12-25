@@ -13,4 +13,4 @@ def index() -> None:
     return render_template('0-index.html')
 
 
-app.run('0.0.0.0', 5000)
+app.run('0.0.0.0')
