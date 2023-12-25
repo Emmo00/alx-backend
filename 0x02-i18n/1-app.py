@@ -15,9 +15,8 @@ class Config:
 
 
 app.config.from_object(Config())
-with app.app_context():
-    babel.default_locale = 'en'
-    babel.default_timezone = 'UTC'
+babel.default_locale = 'en'
+babel.default_timezone = 'UTC'
 
 
 @app.route('/')
